@@ -12,5 +12,6 @@ class ApplicationSerializer(serializers.ModelSerializer):
         fields = ('id', 'title', 'company', 'applied', 'hiring_manager', 'compensation', 'work_site', 'location')
 
 class NoteSerializer(serializers.ModelSerializer):
-    model = Note
-    fields = ('id', 'content')
+    class Meta:
+        model = Note
+        fields = ('id', 'content')
