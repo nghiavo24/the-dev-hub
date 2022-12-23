@@ -1,20 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 const MainHub = () => {
-    const getAllPostings = () =>{
+    const [allPostings, setAllPostings] = useState()
+
+    const getAllPostings = (e) =>{
         axios
         .get('http://localhost:8000/api/postings/')
-        .then((res) => {
-            console.log(res)
-        })
-    
+        .then((res) => {setAllPostings(res.data)})
+        .catch()
     }
+console.log(allPostings)
+
+    
 useEffect(() => {
     getAllPostings()
+    
 }, []);
+
+if(allPostings === undefined) return;
+
+    let listOfPosting = allPostings.map((post, key) => {
+        return(
+        <li>{post.title}</li>
+    )
+})
+
   return (
-    <div>MainHub</div>
+    <div>{listOfPosting}</div>
   )
 }
 
