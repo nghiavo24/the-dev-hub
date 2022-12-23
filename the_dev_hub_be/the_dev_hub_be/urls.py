@@ -20,6 +20,8 @@ from the_dev_hub import views
 
 router = routers.DefaultRouter()
 router.register(r'postings', views.PostingView, 'the_dev_hub')
+router.register(r'applications', views.ApplicationView, 'the_dev_hub')
+router.register(r'notes', views.NoteView, 'the_dev_hub')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
