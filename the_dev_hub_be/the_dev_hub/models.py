@@ -21,3 +21,13 @@ class Application(models.Model):
     compensation = models.IntegerField(blank= True, null = True)
     work_site = models.CharField(max_length=50, default= 'N/A')
     location = models.CharField(max_length=50, default= 'N/A')
+
+    def __str__(self):
+        return self.title
+
+class Note(models.Model):
+    content = models.TextField(max_length=250)
+    application = models.ForeignKey(Application, on_delete= models.CASCADE, related_name= 'notes')
+
+    def __str__(self):
+        return self.content
