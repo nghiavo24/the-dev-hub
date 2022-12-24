@@ -26,4 +26,5 @@ router.register(r'notes', views.NoteView, 'the_dev_hub')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('accounts/', include('allauth.urls'))
 ]
